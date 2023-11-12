@@ -1,0 +1,115 @@
+* button {
+  cursor: pointer;
+
+  height: var(--line-height-l);
+  padding: 6px 28px;
+
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-bold);
+
+  border-radius: 4px;
+
+  &:focus-visible {
+    padding: 4px 26px;
+    border: 2px solid var(--color-info-700);
+    outline: none;
+  }
+}
+
+.primary {
+  background-color: var(--color-accent-500);
+  border: none;
+
+  &:hover {
+    background-color: var(--color-accent-300);
+  }
+
+  &:focus-visible {
+    background-color: var(--color-accent-700);
+  }
+
+  &:active {
+    background-color: var(--color-accent-700);
+  }
+
+  &:disabled {
+    cursor: auto;
+    color: var(--color-light-900);
+    background-color: var(--color-accent-900);
+  }
+}
+
+.secondary {
+  background-color: var(--color-dark-300);
+  border: none;
+
+  &:hover {
+    background-color: var(--color-dark-100);
+  }
+
+  &:focus-visible {
+    background-color: var(--color-dark-300);
+  }
+
+  &:active {
+    background-color: var(--color-dark-500);
+  }
+
+  &:disabled {
+    cursor: auto;
+    color: var(--color-light-900);
+    background-color: var(--color-dark-300);
+  }
+}
+
+.tertiary {
+  color: var(--color-accent-500);
+  background-color: var(--color-dark-900);
+  border: 1px solid var(--color-accent-500);
+
+  &:hover {
+    background-color: var(--color-dark-500);
+  }
+
+  &:focus-visible {
+    background-color: var(--color-dark-900);
+  }
+
+  &:active {
+    background-color: var(--color-accent-900);
+  }
+
+  &:disabled {
+    cursor: auto;
+    color: var(--color-accent-900);
+    background-color: var(--color-dark-900);
+    border: 1px solid var(--color-accent-900);
+  }
+}
+
+.link {
+  font-size: var(--font-size-m);
+  color: var(--color-accent-500);
+  background: rgb(10 102 56 / 0%);
+  border: none;
+
+  &:hover {
+    color: var(--color-accent-300);
+  }
+
+  &:focus-visible {
+    border-radius: 25px;
+  }
+
+  &:active {
+    color: var(--color-accent-700);
+  }
+
+  &:disabled {
+    color: var(--color-accent-900);
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
