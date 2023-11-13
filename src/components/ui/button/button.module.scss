@@ -1,11 +1,12 @@
-* button {
+@mixin button-styles {
   cursor: pointer;
 
-  height: var(--line-height-l);
+  box-sizing: border-box;
   padding: 6px 28px;
 
   font-size: var(--font-size-s);
   font-weight: var(--font-weight-bold);
+  text-align: center;
 
   border-radius: 4px;
 
@@ -17,6 +18,8 @@
 }
 
 .primary {
+  @include button-styles;
+
   background-color: var(--color-accent-500);
   border: none;
 
@@ -40,6 +43,8 @@
 }
 
 .secondary {
+  @include button-styles;
+
   background-color: var(--color-dark-300);
   border: none;
 
@@ -63,6 +68,8 @@
 }
 
 .tertiary {
+  @include button-styles;
+
   color: var(--color-accent-500);
   background-color: var(--color-dark-900);
   border: 1px solid var(--color-accent-500);
@@ -88,6 +95,8 @@
 }
 
 .link {
+  @include button-styles;
+
   font-size: var(--font-size-m);
   color: var(--color-accent-500);
   background: rgb(10 102 56 / 0%);
@@ -98,7 +107,10 @@
   }
 
   &:focus-visible {
+    padding: 4px 26px;
+    border: 2px solid var(--color-info-700);
     border-radius: 25px;
+    outline: none;
   }
 
   &:active {
