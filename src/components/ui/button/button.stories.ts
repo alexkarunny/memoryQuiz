@@ -44,6 +44,7 @@ export const Link: Story = {
     as: 'a',
     children: 'Tertiary Button',
     disabled: false,
+    tabIndex: '0',
     variant: 'link',
   },
 }
