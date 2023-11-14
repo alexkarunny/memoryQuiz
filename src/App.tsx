@@ -1,3 +1,5 @@
+import { Error404 } from '@/assets'
+
 export function App() {
-  return <div>Hello</div>
+  return <Error404 />
 }
