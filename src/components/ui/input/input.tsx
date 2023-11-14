@@ -1,5 +1,6 @@
-import { ComponentPropsWithoutRef, ElementType, ReactNode } from 'react'
+import { ChangeEvent, ComponentPropsWithoutRef, ElementType, ReactNode, useState } from 'react'
 
+import { CloseIcon, ClosedEyeIcon, OpenEyeIcon, SearchIcon } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
@@ -11,13 +12,13 @@ export type InputProps<T extends ElementType = 'input'> = {
   className?: string
   disabled?: boolean
   error?: string
+  inputValue?: string
   labelText?: string
-  placeholderText?: string
+  placeholder: string
   type?: string
-  value: string
-  variant?: 'icon' | 'primary' | 'search'
+  variant?: 'password' | 'primary' | 'search'
 } & ComponentPropsWithoutRef<T>
-export const Input = <T extends ElementType = 'input'>(
+export const TextField = <T extends ElementType = 'input'>(
   props: InputProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof InputProps<T>>
 ) => {
   const {
@@ -25,18 +26,31 @@ export const Input = <T extends ElementType = 'input'>(
     className,
     disabled,
     error,
+    inputValue,
     labelText,
-    placeholderText,
-    type = 'text',
-    value,
+    placeholder,
     variant = 'primary',
   } = props
   const classNames = {
-    all: clsx(s[variant], className, error && s.inputError, disabled && s.disabledInput),
+    input: clsx(s[variant], className, error && s.inputError, disabled && s.disabledInput),
+  }
+  const [currentValue, setInputValue] = useState<string | undefined>(inputValue)
+  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.currentTarget.value)
   }
 
+  const onCloseClickHandler = () => {
+    setInputValue('')
+  }
+
+  const finalType = variant === 'password' && !showPassword ? 'password' : 'text'
+
+  const onClickShowPassword = () => currentValue && setShowPassword(true)
+  const onClickHidePassword = () => setShowPassword(false)
+
   return (
-    <div className={s.inputContainer}>
+    <div className={s.textFieldContainer}>
       {variant === 'search' || (
         <label htmlFor={'input'}>
           <Typography className={s.label} variant={'body2'}>
@@ -44,14 +58,32 @@ export const Input = <T extends ElementType = 'input'>(
           </Typography>
         </label>
       )}
-      <Component
-        className={classNames.all}
-        disabled={disabled}
-        id={'input'}
-        placeholder={placeholderText}
-        type={type}
-        value={value}
-      />
+      <div className={s.inputContainer}>
+        <Component
+          className={classNames.input}
+          disabled={disabled}
+          id={'input'}
+          onChange={onChangeHandler}
+          placeholder={placeholder}
+          type={finalType}
+          value={currentValue}
+        />
+        {variant === 'search' && (
+          <>
+            <SearchIcon className={s.searchIcon} />
+            {currentValue && <CloseIcon className={s.closeIcon} onClick={onCloseClickHandler} />}
+          </>
+        )}
+        {variant === 'password' && (
+          <>
+            {showPassword ? (
+              <OpenEyeIcon className={s.eyeIcon} onClick={onClickHidePassword} />
+            ) : (
+              <ClosedEyeIcon className={s.eyeIcon} onClick={onClickShowPassword} />
+            )}
+          </>
+        )}
+      </div>
       {error && (
         <Typography className={s.error} variant={'caption'}>
           {error}
