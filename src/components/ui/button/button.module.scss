@@ -11,9 +11,8 @@
   border-radius: 4px;
 
   &:focus-visible {
-    padding: 4px 26px;
-    border: 2px solid var(--color-info-700);
     outline: none;
+    box-shadow: 0 0 0 2px var(--color-info-700);
   }
 }
 
