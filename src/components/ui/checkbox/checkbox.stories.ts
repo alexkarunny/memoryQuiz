@@ -34,6 +34,5 @@ export const CheckboxWithoutLabel: Story = {
 export const UnControlled: Story = {
   args: {
     label: 'uncontrolled checkbox',
-    tabIndex: '0',
   },
 }

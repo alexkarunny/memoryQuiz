@@ -90,15 +90,5 @@ button {
         background-color: var(--color-dark-100);
       }
     }
-
-    &:focus-visible .buttonCheckBox {
-      width: 32px;
-      height: 32px;
-      background-color: yellowgreen;
-
-      .root[data-state='unchecked'] {
-        background-color: yellowgreen;
-      }
-    }
   }
 }
