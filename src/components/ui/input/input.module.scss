@@ -1,0 +1,85 @@
+.textFieldContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.inputContainer {
+  position: relative;
+  color: var(--color-dark-300);
+
+  input {
+    width: 100%;
+    height: 36px;
+    padding: 6px 12px;
+
+    line-height: var(--line-height-m);
+    color: var(--color-light-100);
+
+    background-color: transparent;
+    border: 1px solid var(--color-dark-300);
+    border-radius: 2px;
+    outline: none;
+
+    &::placeholder {
+      color: var(--color-dark-300);
+    }
+
+    &:active,
+    &:focus {
+      border-color: var(--color-light-100);
+    }
+
+    &.inputError {
+      color: var(--color-danger-300);
+      border: 2px solid var(--color-danger-300);
+    }
+
+    &.disabledInput {
+      &:active {
+        border-color: var(--color-dark-300);
+      }
+    }
+
+    &.search {
+      padding-left: 40px;
+    }
+  }
+
+  &:hover input {
+    background: var(--color-dark-700);
+    border-color: var(--color-dark-100);
+  }
+
+  &:hover input.inputError {
+    background: var(--color-dark-700);
+    border: 2px solid var(--color-danger-300);
+  }
+
+  & .searchIcon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+  }
+
+  & .closeIcon,
+  .eyeIcon {
+    cursor: pointer;
+
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+  }
+}
+
+.label {
+  margin: 0;
+  color: var(--color-dark-100);
+}
+
+.error {
+  margin: 0;
+  line-height: var(--line-height-m);
+  color: var(--color-danger-300);
+}
