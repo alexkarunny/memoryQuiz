@@ -19,19 +19,22 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    labelText: 'Label',
+    labelText: 'Input',
+    placeholder: 'Input',
     variant: 'primary',
   },
 }
-export const Icon: Story = {
+export const Password: Story = {
   args: {
-    labelText: 'Label',
+    labelText: 'Password',
+    placeholder: 'Password',
     variant: 'password',
   },
 }
 
 export const Search: Story = {
   args: {
+    placeholder: 'Search',
     variant: 'search',
   },
 }

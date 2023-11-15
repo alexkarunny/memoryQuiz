@@ -48,6 +48,7 @@ export const TextField = <T extends ElementType = 'input'>(
 
   const onClickShowPassword = () => currentValue && setShowPassword(true)
   const onClickHidePassword = () => setShowPassword(false)
+  const activeColor = currentValue ? 'var(--color-light-100)' : ''
 
   return (
     <div className={s.textFieldContainer}>
@@ -70,16 +71,30 @@ export const TextField = <T extends ElementType = 'input'>(
         />
         {variant === 'search' && (
           <>
-            <SearchIcon className={s.searchIcon} />
-            {currentValue && <CloseIcon className={s.closeIcon} onClick={onCloseClickHandler} />}
+            <SearchIcon className={s.searchIcon} color={activeColor} />
+            {currentValue && (
+              <CloseIcon
+                className={s.closeIcon}
+                color={activeColor}
+                onClick={onCloseClickHandler}
+              />
+            )}
           </>
         )}
         {variant === 'password' && (
           <>
             {showPassword ? (
-              <OpenEyeIcon className={s.eyeIcon} onClick={onClickHidePassword} />
+              <OpenEyeIcon
+                className={s.eyeIcon}
+                color={activeColor}
+                onClick={onClickHidePassword}
+              />
             ) : (
-              <ClosedEyeIcon className={s.eyeIcon} onClick={onClickShowPassword} />
+              <ClosedEyeIcon
+                className={s.eyeIcon}
+                color={activeColor}
+                onClick={onClickShowPassword}
+              />
             )}
           </>
         )}

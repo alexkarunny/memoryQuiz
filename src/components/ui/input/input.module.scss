@@ -5,13 +5,7 @@
 
 .inputContainer {
   position: relative;
-
-  /* color: var(--color-dark-300); */
-
-  &:hover input {
-    background: var(--color-dark-700);
-    border-color: var(--color-dark-100);
-  }
+  color: var(--color-dark-300);
 
   input {
     width: 100%;
@@ -28,9 +22,6 @@
 
     &::placeholder {
       color: var(--color-dark-300);
-    }
-
-    &:hover {
     }
 
     &:active,
@@ -52,6 +43,16 @@
     &.search {
       padding-left: 40px;
     }
+  }
+
+  &:hover input {
+    background: var(--color-dark-700);
+    border-color: var(--color-dark-100);
+  }
+
+  &:hover input.inputError {
+    background: var(--color-dark-700);
+    border: 2px solid var(--color-danger-300);
   }
 
   & .searchIcon {
