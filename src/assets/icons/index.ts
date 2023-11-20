@@ -1,5 +1,6 @@
 export { ArrowBackIcon } from './components/ArrowBackIcon'
 export { ArrowMiniDownIcon } from './components/ArrowMiniDownIcon'
+export { ArrowMiniLeftIcon } from './components/ArrowMiniLeftIcon'
 export { ArrowMiniRightIcon } from './components/ArrowMiniRightIcon'
 export { ArrowMiniUpIcon } from './components/ArrowMiniUpIcon'
 export { ClearIcon } from './components/ClearIcon'

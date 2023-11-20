@@ -1,9 +1,18 @@
-import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { ArrowMiniDownIcon } from '@/assets'
-import { SelectItem } from '@/components/ui/select/selectItem/SelectItem'
+import { SelectItem } from '@/components/ui/select/selectItem'
 import { Typography } from '@/components/ui/typography'
-import { Content, Group, Icon, Portal, Root, Trigger, Value } from '@radix-ui/react-select'
+import {
+  Content,
+  Group,
+  Icon,
+  Portal,
+  Root,
+  Trigger,
+  Value,
+  Viewport,
+} from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
 import s from './Select.module.scss'
@@ -20,6 +29,7 @@ export type SelectProps = {
   disabled?: boolean
   items: ItemsType[]
   label?: string
+  placeholder?: ReactNode
   variant?: SelectVariant
 } & ComponentPropsWithoutRef<typeof Root>
 
@@ -31,9 +41,9 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
       disabled,
       items,
       label,
-      onOpenChange,
       onValueChange,
       open,
+      placeholder = 'Select',
       value,
       variant = 'default',
       ...rest
@@ -44,41 +54,45 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
       content: clsx(s.content),
       icon: clsx(s.icon),
       label: clsx(s.label, disabled && s.disabled),
+      placeholder: clsx(s.placeholder),
       trigger: clsx(s.trigger, s[variant], s[`${variant}Paddings`], className),
     }
 
     return (
       <Root
         disabled={disabled}
-        onOpenChange={onOpenChange}
         onValueChange={onValueChange}
         open={open}
+        required={rest.required}
+        value={value}
         {...rest}
       >
         {label && (
-          <Typography className={classNames.label} variant={'body2'}>
+          <Typography as={'label'} className={classNames.label} variant={'body2'}>
             {label}
           </Typography>
         )}
         <Trigger className={classNames.trigger} ref={ref}>
-          <Value placeholder={value} />
+          <Value className={classNames.placeholder} placeholder={placeholder} />
           <Icon asChild className={classNames.icon}>
             <ArrowMiniDownIcon disabled={disabled} />
           </Icon>
         </Trigger>
 
         <Portal>
-          <Content className={classNames.content}>
-            <Group>
-              {items.map(item => (
-                <SelectItem
-                  key={item.value}
-                  title={item.title}
-                  value={item.value}
-                  variant={variant}
-                />
-              ))}
-            </Group>
+          <Content className={classNames.content} position={'popper'} ref={ref}>
+            <Viewport>
+              <Group>
+                {items.map(item => (
+                  <SelectItem
+                    key={item.value}
+                    title={item.title}
+                    value={item.value}
+                    variant={variant}
+                  />
+                ))}
+              </Group>
+            </Viewport>
           </Content>
         </Portal>
       </Root>

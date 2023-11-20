@@ -20,8 +20,8 @@ export const Default: Story = {
   args: {
     disabled: false,
     items: items,
-    open: true,
-    value: 'Hello',
+    open: false,
+    placeholder: items[0].title,
     variant: 'default',
   },
 }
