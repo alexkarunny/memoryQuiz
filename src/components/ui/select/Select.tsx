@@ -59,14 +59,7 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
     }
 
     return (
-      <Root
-        disabled={disabled}
-        onValueChange={onValueChange}
-        open={open}
-        required={rest.required}
-        value={value}
-        {...rest}
-      >
+      <Root disabled={disabled} onValueChange={onValueChange} open={open} value={value} {...rest}>
         {label && (
           <Typography as={'label'} className={classNames.label} variant={'body2'}>
             {label}
@@ -89,7 +82,9 @@ export const Select = forwardRef<ElementRef<typeof Root>, SelectProps>(
                     title={item.title}
                     value={item.value}
                     variant={variant}
-                  />
+                  >
+                    {item.title}
+                  </SelectItem>
                 ))}
               </Group>
             </Viewport>

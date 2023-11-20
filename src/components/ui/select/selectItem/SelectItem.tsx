@@ -1,6 +1,6 @@
 import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
-import { Item } from '@radix-ui/react-select'
+import { Item, ItemText } from '@radix-ui/react-select'
 
 type SelectItemProps = {
   className?: string
@@ -15,7 +15,7 @@ import { clsx } from 'clsx'
 import s from '../Select.module.scss'
 
 export const SelectItem = forwardRef<ElementRef<typeof Item>, SelectItemProps>(
-  ({ className, title, variant, ...rest }, ref) => {
+  ({ children, className, title, variant, ...rest }, ref) => {
     const classNames = {
       item: clsx(s.selectItem, s[variant], s[`${variant}Paddings`]),
       typography: clsx(s.typography),
@@ -23,9 +23,11 @@ export const SelectItem = forwardRef<ElementRef<typeof Item>, SelectItemProps>(
 
     return (
       <Item className={classNames.item} ref={ref} {...rest}>
-        <Typography className={classNames.typography} variant={'body2'}>
-          {title}
-        </Typography>
+        <ItemText>
+          <Typography className={classNames.typography} variant={'body2'}>
+            {children}
+          </Typography>
+        </ItemText>
       </Item>
     )
   }
