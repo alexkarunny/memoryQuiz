@@ -3,7 +3,7 @@ import { FC } from 'react'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
-import s from './DropdownAvatar.module.scss'
+import s from './dropdownAvatar.module.scss'
 
 export type DropdownWithAvatarProps = {
   avatar?: string

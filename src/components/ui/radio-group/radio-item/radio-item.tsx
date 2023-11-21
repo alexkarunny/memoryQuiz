@@ -1,23 +1,25 @@
-import { ComponentPropsWithoutRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 
 import { Typography } from '@/components/ui/typography'
 import { Indicator, Item } from '@radix-ui/react-radio-group'
 
 import s from './radio-item.module.scss'
 
-export type RadioItems = {
+export type RadioItemProps = {
   label: string
 } & ComponentPropsWithoutRef<typeof Item>
 
-export const RadioItem = ({ disabled, label, value }: RadioItems) => {
-  return (
-    <div className={s.container}>
-      <Typography as={'label'} className={disabled ? s.label : ''} variant={'body2'}>
-        <Item className={s.RadioGroupItem} disabled={disabled} value={value}>
-          <Indicator className={s.RadioGroupIndicator} />
-        </Item>
-        {label}
-      </Typography>
-    </div>
-  )
-}
+export const RadioItem = forwardRef<ElementRef<typeof Item>, RadioItemProps>(
+  ({ disabled, label, value }, ref) => {
+    return (
+      <div className={s.container}>
+        <Typography as={'label'} className={disabled ? s.label : ''} variant={'body2'}>
+          <Item className={s.RadioGroupItem} disabled={disabled} ref={ref} value={value}>
+            <Indicator className={s.RadioGroupIndicator} />
+          </Item>
+          {label}
+        </Typography>
+      </div>
+    )
+  }
+)

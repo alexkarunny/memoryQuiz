@@ -15,7 +15,7 @@ import {
 } from '@radix-ui/react-select'
 import { clsx } from 'clsx'
 
-import s from './Select.module.scss'
+import s from './select.module.scss'
 
 export type ItemsType = {
   title: string

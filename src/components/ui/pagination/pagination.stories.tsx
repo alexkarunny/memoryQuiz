@@ -1,4 +1,4 @@
-import { Pagination } from '@/components/ui/pagination/Pagination'
+import { Pagination } from '@/components/ui/pagination/pagination'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

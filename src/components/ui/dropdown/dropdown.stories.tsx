@@ -1,11 +1,11 @@
 import { EditIcon, LogOutIcon, PlayIcon, ProfileAvatarIcon, ThrashIcon } from '@/assets'
 import { Avatar } from '@/components/ui/avatar'
-import { Dropdown } from '@/components/ui/dropdown/Dropdown'
-import { DropdownWithAvatar } from '@/components/ui/dropdown/dropdownAvatar/DropdownAvatar'
+import { Dropdown } from '@/components/ui/dropdown/dropdown'
+import { DropdownWithAvatar } from '@/components/ui/dropdown/dropdownAvatar/dropdownAvatar'
 import {
   DropdownItem,
   DropdownItemWithIcon,
-} from '@/components/ui/dropdown/dropdownItem/DropdownItems'
+} from '@/components/ui/dropdown/dropdownItem/dropdownItems'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

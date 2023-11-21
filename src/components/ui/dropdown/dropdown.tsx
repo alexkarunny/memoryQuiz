@@ -4,7 +4,7 @@ import { MoreOptionsIcon } from '@/assets'
 import { Arrow, Content, Portal, Root, Trigger } from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 
-import s from './Dropdown.module.scss'
+import s from './dropdown.module.scss'
 
 export type DropdownProps = {
   align?: 'center' | 'end' | 'start'

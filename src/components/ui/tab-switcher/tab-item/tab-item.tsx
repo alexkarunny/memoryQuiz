@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ElementRef, ReactNode, forwardRef } from 'react'
 
 import { Content } from '@radix-ui/react-tabs'
 
@@ -9,12 +9,12 @@ type TabItemProps = {
   value: string
 }
 
-export const TabItem = (props: TabItemProps) => {
-  const { children, value } = props
-
-  return (
-    <Content className={s.content} value={value}>
-      {children}
-    </Content>
-  )
-}
+export const TabItem = forwardRef<ElementRef<typeof Content>, TabItemProps>(
+  ({ children, value }, ref) => {
+    return (
+      <Content className={s.content} ref={ref} value={value}>
+        {children}
+      </Content>
+    )
+  }
+)

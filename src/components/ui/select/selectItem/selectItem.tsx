@@ -12,7 +12,7 @@ import { SelectVariant } from '@/components/ui/select'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
-import s from '../Select.module.scss'
+import s from '../select.module.scss'
 
 export const SelectItem = forwardRef<ElementRef<typeof Item>, SelectItemProps>(
   ({ children, className, title, variant, ...rest }, ref) => {

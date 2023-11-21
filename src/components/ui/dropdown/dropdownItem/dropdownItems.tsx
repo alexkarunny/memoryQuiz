@@ -4,7 +4,7 @@ import { Typography } from '@/components/ui/typography'
 import { Item } from '@radix-ui/react-dropdown-menu'
 import { clsx } from 'clsx'
 
-import s from './DropdownItem.module.scss'
+import s from './dropdownItem.module.scss'
 
 export type DropdownItemProps = {
   children?: ReactNode

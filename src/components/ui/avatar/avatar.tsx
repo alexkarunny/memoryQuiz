@@ -3,7 +3,7 @@ import { ComponentPropsWithoutRef, ElementRef, forwardRef } from 'react'
 import { Image, Root } from '@radix-ui/react-avatar'
 import { clsx } from 'clsx'
 
-import s from './Avatar.module.scss'
+import s from './avatar.module.scss'
 
 export type AvatarProps = {
   image: string

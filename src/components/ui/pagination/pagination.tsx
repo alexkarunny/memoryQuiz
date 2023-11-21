@@ -4,7 +4,7 @@ import { Select, SelectProps } from '@/components/ui/select'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
-import s from './Pagination.module.scss'
+import s from './pagination.module.scss'
 
 export type PaginationProps = {
   currentPage: number

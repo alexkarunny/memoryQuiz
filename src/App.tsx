@@ -1,12 +1,8 @@
 import { LogOutIcon } from '@/assets'
 import { Avatar } from '@/components/ui/avatar'
 import { Dropdown } from '@/components/ui/dropdown'
-
-import { DropdownWithAvatar } from './components/ui/dropdown/dropdownAvatar/DropdownAvatar'
-import {
-  DropdownItem,
-  DropdownItemWithIcon,
-} from './components/ui/dropdown/dropdownItem/DropdownItems'
+import { DropdownWithAvatar } from '@/components/ui/dropdown/dropdownAvatar'
+import { DropdownItem, DropdownItemWithIcon } from '@/components/ui/dropdown/dropdownItem'
 
 export function App() {
   return (

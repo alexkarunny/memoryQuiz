@@ -1,4 +1,4 @@
-import { Avatar } from '@/components/ui/avatar/Avatar'
+import { Avatar } from '@/components/ui/avatar/avatar'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

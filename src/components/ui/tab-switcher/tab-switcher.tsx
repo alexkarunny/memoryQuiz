@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import { ElementRef, ReactNode, forwardRef } from 'react'
 
 import { List, Root, Trigger } from '@radix-ui/react-tabs'
 
@@ -17,11 +17,9 @@ type PropsType = {
   onValueChange?: (value: string) => void
   tabs: TabItemType[]
 }
-export const TabSwitcher = (props: PropsType) => {
-  const { tabs } = props
-
+export const TabSwitcher = forwardRef<ElementRef<typeof Root>, PropsType>(({ tabs }, ref) => {
   return (
-    <Root className={s.root} defaultValue={tabs[0].value}>
+    <Root className={s.root} defaultValue={tabs[0].value} ref={ref}>
       <List aria-label={'tabs example'} className={s.list}>
         {tabs.map(tab => (
           <Trigger className={s.trigger} disabled={tab.disabled} key={tab.value} value={tab.value}>
@@ -36,4 +34,4 @@ export const TabSwitcher = (props: PropsType) => {
       ))}
     </Root>
   )
-}
+})
