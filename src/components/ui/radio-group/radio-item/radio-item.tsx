@@ -9,9 +9,7 @@ export type RadioItems = {
   label: string
 } & ComponentPropsWithoutRef<typeof Item>
 
-export const RadioItem = (props: RadioItems) => {
-  const { disabled, label, value } = props
-
+export const RadioItem = ({ disabled, label, value }: RadioItems) => {
   return (
     <div className={s.container}>
       <Typography as={'label'} className={disabled ? s.label : ''} variant={'body2'}>
