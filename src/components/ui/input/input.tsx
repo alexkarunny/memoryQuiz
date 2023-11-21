@@ -33,6 +33,7 @@ export const TextField = <T extends ElementType = 'input'>(
   } = props
   const classNames = {
     input: clsx(s[variant], className, error && s.inputError, disabled && s.disabledInput),
+    label: clsx(s.label),
   }
   const [currentValue, setInputValue] = useState<string | undefined>(inputValue)
   const [showPassword, setShowPassword] = useState<boolean>(false)
@@ -53,11 +54,9 @@ export const TextField = <T extends ElementType = 'input'>(
   return (
     <div className={s.textFieldContainer}>
       {variant === 'search' || (
-        <label htmlFor={'input'}>
-          <Typography className={s.label} variant={'body2'}>
-            {labelText}
-          </Typography>
-        </label>
+        <Typography as={'label'} className={classNames.label} htmlFor={'input'} variant={'body2'}>
+          {labelText}
+        </Typography>
       )}
       <div className={s.inputContainer}>
         <Component
