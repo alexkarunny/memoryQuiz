@@ -10,26 +10,28 @@ import {
 
 export function App() {
   return (
-    <Dropdown
-      align={'end'}
-      trigger={
-        <Avatar
-          image={
-            'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'
-          }
-        />
-      }
-    >
-      <DropdownItem>
-        <DropdownWithAvatar
-          avatar={
-            'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'
-          }
-          mail={'IvanMain@gmail.com'}
-          name={'Ivan'}
-        />
-      </DropdownItem>
-      <DropdownItemWithIcon icon={<LogOutIcon />} label={'Sign Out'} />
-    </Dropdown>
+    <>
+      <Dropdown
+        align={'end'}
+        trigger={
+          <Avatar
+            image={
+              'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'
+            }
+          />
+        }
+      >
+        <DropdownItem>
+          <DropdownWithAvatar
+            avatar={
+              'https://images.unsplash.com/photo-1492633423870-43d1cd2775eb?&w=128&h=128&dpr=2&q=80'
+            }
+            mail={'IvanMain@gmail.com'}
+            name={'Ivan'}
+          />
+        </DropdownItem>
+        <DropdownItemWithIcon icon={<LogOutIcon />} label={'Sign Out'} />
+      </Dropdown>
+    </>
   )
 }
