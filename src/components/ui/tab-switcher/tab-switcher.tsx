@@ -1,4 +1,4 @@
-import { ElementRef, ReactNode, forwardRef } from 'react'
+import { ComponentPropsWithoutRef, ElementRef, ReactNode, forwardRef } from 'react'
 
 import { List, Root, Trigger } from '@radix-ui/react-tabs'
 
@@ -16,7 +16,7 @@ export type TabItemType = {
 type PropsType = {
   onValueChange?: (value: string) => void
   tabs: TabItemType[]
-}
+} & ComponentPropsWithoutRef<typeof Root>
 export const TabSwitcher = forwardRef<ElementRef<typeof Root>, PropsType>(({ tabs }, ref) => {
   return (
     <Root className={s.root} defaultValue={tabs[0].value} ref={ref}>
