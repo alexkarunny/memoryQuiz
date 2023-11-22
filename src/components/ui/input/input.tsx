@@ -1,4 +1,11 @@
-import { ChangeEvent, ComponentPropsWithoutRef, ElementType, ReactNode, useState } from 'react'
+import {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  ElementRef,
+  ReactNode,
+  forwardRef,
+  useState,
+} from 'react'
 
 import { CloseIcon, ClosedEyeIcon, OpenEyeIcon, SearchIcon } from '@/assets'
 import { Typography } from '@/components/ui/typography'
@@ -6,103 +13,110 @@ import { clsx } from 'clsx'
 
 import s from './input.module.scss'
 
-export type InputProps<T extends ElementType = 'input'> = {
-  as?: T
+export type TextFieldProps = {
   children?: ReactNode
   className?: string
   disabled?: boolean
   error?: string
-  inputValue?: string
-  labelText?: string
+  label?: string
+  onValueChange?: (value: string) => void
   placeholder: string
   type?: string
-  variant?: 'password' | 'primary' | 'search'
-} & ComponentPropsWithoutRef<T>
-export const TextField = <T extends ElementType = 'input'>(
-  props: InputProps<T> & Omit<ComponentPropsWithoutRef<T>, keyof InputProps<T>>
-) => {
-  const {
-    as: Component = 'input',
-    className,
-    disabled,
-    error,
-    inputValue,
-    labelText,
-    placeholder,
-    variant = 'primary',
-  } = props
-  const classNames = {
-    input: clsx(s[variant], className, error && s.inputError, disabled && s.disabledInput),
-    label: clsx(s.label),
-  }
-  const [currentValue, setInputValue] = useState<string | undefined>(inputValue)
-  const [showPassword, setShowPassword] = useState<boolean>(false)
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.currentTarget.value)
-  }
+  value?: string
+  variant?: 'password' | 'search'
+} & ComponentPropsWithoutRef<'input'>
+export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
+  (
+    {
+      className,
+      disabled,
+      error,
+      label,
+      onChange,
+      onValueChange,
+      placeholder,
+      value,
+      variant,
+      ...rest
+    },
+    ref
+  ) => {
+    const classNames = {
+      input: clsx(variant && s[variant], className, error && s.inputError),
+      label: clsx(s.label),
+    }
+    const [currentValue, setInputValue] = useState<string | undefined>(value)
+    const [showPassword, setShowPassword] = useState<boolean>(false)
+    const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+      setInputValue(e.currentTarget.value)
+      onChange && onChange(e)
+      onValueChange && onValueChange(e.currentTarget.value)
+    }
 
-  const onCloseClickHandler = () => {
-    setInputValue('')
-  }
+    const onCloseClickHandler = () => {
+      setInputValue('')
+    }
 
-  const finalType = variant === 'password' && !showPassword ? 'password' : 'text'
+    const finalType = variant === 'password' && !showPassword ? 'password' : 'text'
 
-  const onClickShowPassword = () => currentValue && setShowPassword(true)
-  const onClickHidePassword = () => setShowPassword(false)
-  const activeColor = currentValue ? 'var(--color-light-100)' : ''
+    const onClickShowPassword = () => currentValue && setShowPassword(true)
+    const onClickHidePassword = () => setShowPassword(false)
+    const activeColor = currentValue ? 'var(--color-light-100)' : ''
 
-  return (
-    <div className={s.textFieldContainer}>
-      {variant === 'search' || (
-        <Typography as={'label'} className={classNames.label} htmlFor={'input'} variant={'body2'}>
-          {labelText}
-        </Typography>
-      )}
-      <div className={s.inputContainer}>
-        <Component
-          className={classNames.input}
-          disabled={disabled}
-          id={'input'}
-          onChange={onChangeHandler}
-          placeholder={placeholder}
-          type={finalType}
-          value={currentValue}
-        />
-        {variant === 'search' && (
-          <>
-            <SearchIcon className={s.searchIcon} color={activeColor} />
-            {currentValue && (
-              <CloseIcon
-                className={s.closeIcon}
-                color={activeColor}
-                onClick={onCloseClickHandler}
-              />
-            )}
-          </>
+    return (
+      <div className={s.textFieldContainer}>
+        {variant === 'search' || (
+          <Typography as={'label'} className={classNames.label} htmlFor={'input'} variant={'body2'}>
+            {label}
+          </Typography>
         )}
-        {variant === 'password' && (
-          <>
-            {showPassword ? (
-              <OpenEyeIcon
-                className={s.eyeIcon}
-                color={activeColor}
-                onClick={onClickHidePassword}
-              />
-            ) : (
-              <ClosedEyeIcon
-                className={s.eyeIcon}
-                color={activeColor}
-                onClick={onClickShowPassword}
-              />
-            )}
-          </>
+        <div className={s.inputContainer}>
+          <input
+            className={classNames.input}
+            disabled={disabled}
+            id={'input'}
+            onChange={onChangeHandler}
+            placeholder={placeholder}
+            ref={ref}
+            type={finalType}
+            {...rest}
+          />
+          {variant === 'search' && (
+            <>
+              <SearchIcon className={s.searchIcon} color={activeColor} />
+              {currentValue && (
+                <CloseIcon
+                  className={s.closeIcon}
+                  color={activeColor}
+                  onClick={onCloseClickHandler}
+                />
+              )}
+            </>
+          )}
+          {variant === 'password' && currentValue && (
+            <>
+              {showPassword ? (
+                <OpenEyeIcon
+                  className={s.eyeIcon}
+                  color={activeColor}
+                  onClick={onClickHidePassword}
+                />
+              ) : (
+                <ClosedEyeIcon
+                  className={s.eyeIcon}
+                  color={activeColor}
+                  onClick={onClickShowPassword}
+                />
+              )}
+            </>
+          )}
+        </div>
+        {error && (
+          <Typography className={s.error} variant={'caption'}>
+            {error}
+          </Typography>
         )}
       </div>
-      {error && (
-        <Typography className={s.error} variant={'caption'}>
-          {error}
-        </Typography>
-      )}
-    </div>
-  )
-}
+    )
+  }
+)
