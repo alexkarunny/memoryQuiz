@@ -1,6 +1,6 @@
 import { ChangeEvent, ComponentPropsWithoutRef, ElementType, ReactNode, useState } from 'react'
 
-import { CloseIcon, ClosedEyeIcon, OpenEyeIcon, SearchIcon } from '@/assets'
+import { ClearIcon, ClosedEyeIcon, OpenEyeIcon, SearchIcon } from '@/assets'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
@@ -13,7 +13,7 @@ export type InputProps<T extends ElementType = 'input'> = {
   disabled?: boolean
   error?: string
   inputValue?: string
-  labelText?: string
+  label?: string
   placeholder: string
   type?: string
   variant?: 'password' | 'primary' | 'search'
@@ -27,15 +27,20 @@ export const TextField = <T extends ElementType = 'input'>(
     disabled,
     error,
     inputValue,
-    labelText,
+    label,
     placeholder,
     variant = 'primary',
   } = props
   const classNames = {
-    input: clsx(s[variant], className, error && s.inputError, disabled && s.disabledInput),
+    closeIcon: clsx(s.closeIcon),
+    error: clsx(s.error),
+    eyeIcon: clsx(s.eyeIcon),
+    input: clsx(s[variant], className, error && s.inputError, disabled && s.disabled),
+    label: clsx(s.label, disabled && s.disabled),
+    searchIcon: clsx(s.searchIcon),
   }
   const [currentValue, setInputValue] = useState<string | undefined>(inputValue)
-  const [showPassword, setShowPassword] = useState<boolean>(false)
+  const [showPassword, setShowPassword] = useState<boolean>(true)
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.currentTarget.value)
   }
@@ -48,16 +53,23 @@ export const TextField = <T extends ElementType = 'input'>(
 
   const onClickShowPassword = () => currentValue && setShowPassword(true)
   const onClickHidePassword = () => setShowPassword(false)
-  const activeColor = currentValue ? 'var(--color-light-100)' : ''
+
+  const SearchIconColor = () => {
+    if (currentValue && !error) {
+      return '#FFFFFF'
+    } else if (disabled) {
+      return '#4C4C4C'
+    } else {
+      return '#808080'
+    }
+  }
 
   return (
     <div className={s.textFieldContainer}>
-      {variant === 'search' || (
-        <label htmlFor={'input'}>
-          <Typography className={s.label} variant={'body2'}>
-            {labelText}
-          </Typography>
-        </label>
+      {label && (
+        <Typography as={'label'} className={classNames.label} variant={'body2'}>
+          {label}
+        </Typography>
       )}
       <div className={s.inputContainer}>
         <Component
@@ -71,11 +83,11 @@ export const TextField = <T extends ElementType = 'input'>(
         />
         {variant === 'search' && (
           <>
-            <SearchIcon className={s.searchIcon} color={activeColor} />
+            <SearchIcon className={classNames.searchIcon} color={SearchIconColor()} />
             {currentValue && (
-              <CloseIcon
-                className={s.closeIcon}
-                color={activeColor}
+              <ClearIcon
+                className={classNames.closeIcon}
+                color={'#FFFFFF'}
                 onClick={onCloseClickHandler}
               />
             )}
@@ -85,14 +97,14 @@ export const TextField = <T extends ElementType = 'input'>(
           <>
             {showPassword ? (
               <OpenEyeIcon
-                className={s.eyeIcon}
-                color={activeColor}
+                className={classNames.eyeIcon}
+                color={disabled ? '#4C4C4C' : '#FFFFFF'}
                 onClick={onClickHidePassword}
               />
             ) : (
               <ClosedEyeIcon
-                className={s.eyeIcon}
-                color={activeColor}
+                className={classNames.eyeIcon}
+                color={disabled ? '#4C4C4C' : '#FFFFFF'}
                 onClick={onClickShowPassword}
               />
             )}
@@ -100,7 +112,7 @@ export const TextField = <T extends ElementType = 'input'>(
         )}
       </div>
       {error && (
-        <Typography className={s.error} variant={'caption'}>
+        <Typography className={classNames.error} variant={'caption'}>
           {error}
         </Typography>
       )}

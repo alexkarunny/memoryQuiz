@@ -19,14 +19,14 @@ type Story = StoryObj<typeof meta>
 
 export const Primary: Story = {
   args: {
-    labelText: 'Input',
+    label: 'Input',
     placeholder: 'Input',
     variant: 'primary',
   },
 }
 export const Password: Story = {
   args: {
-    labelText: 'Password',
+    label: 'Password',
     placeholder: 'Password',
     variant: 'password',
   },
