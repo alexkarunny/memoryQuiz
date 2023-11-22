@@ -24,8 +24,8 @@
       color: var(--color-dark-300);
     }
 
-    &:active,
-    &:focus {
+    &:focus,
+    &:active:not(&:disabled, .inputError) {
       border-color: var(--color-light-100);
     }
 
@@ -34,25 +34,19 @@
       border: 2px solid var(--color-danger-300);
     }
 
-    &.disabledInput {
-      &:active {
-        border-color: var(--color-dark-300);
-      }
-    }
-
     &.search {
       padding-left: 40px;
     }
   }
 
-  &:hover input {
-    background: var(--color-dark-700);
-    border-color: var(--color-dark-100);
-  }
+  &:hover {
+    input:not(:focus, :disabled, .inputError) {
+      border-color: var(--color-dark-100);
+    }
 
-  &:hover input.inputError {
-    background: var(--color-dark-700);
-    border: 2px solid var(--color-danger-300);
+    input:not(input:disabled) {
+      background-color: var(--color-dark-700);
+    }
   }
 
   & .searchIcon {
