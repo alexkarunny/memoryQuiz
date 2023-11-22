@@ -1,6 +1,9 @@
 @mixin button-styles {
   cursor: pointer;
 
+  display: flex;
+  justify-content: center;
+
   box-sizing: border-box;
   padding: 6px 28px;
 
