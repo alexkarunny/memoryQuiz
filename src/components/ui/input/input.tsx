@@ -64,8 +64,8 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
 
     const finalType = variant === 'password' && !showPassword ? 'password' : 'text'
 
-    const onClickShowPassword = () => currentValue && setShowPassword(true)
-    const onClickHidePassword = () => setShowPassword(false)
+    const onClickHideShowPassword = () => setShowPassword(currentValue => !currentValue)
+
     const SearchIconColor = () => {
       if (currentValue && !error) {
         return '#FFFFFF'
@@ -113,13 +113,13 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
                 <OpenEyeIcon
                   className={classNames.eyeIcon}
                   color={disabled ? '#4C4C4C' : '#FFFFFF'}
-                  onClick={onClickHidePassword}
+                  onClick={onClickHideShowPassword}
                 />
               ) : (
                 <ClosedEyeIcon
                   className={classNames.eyeIcon}
                   color={disabled ? '#4C4C4C' : '#FFFFFF'}
-                  onClick={onClickShowPassword}
+                  onClick={onClickHideShowPassword}
                 />
               )}
             </>
