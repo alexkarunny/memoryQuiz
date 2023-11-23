@@ -6,7 +6,7 @@ const meta = {
   argTypes: {
     variant: {
       control: { type: 'radio' },
-      options: ['primary', 'password', 'search'],
+      options: ['password', 'search'],
     },
   },
   component: TextField,
@@ -21,7 +21,6 @@ export const Primary: Story = {
   args: {
     label: 'Input',
     placeholder: 'Input',
-    variant: 'primary',
   },
 }
 export const Password: Story = {

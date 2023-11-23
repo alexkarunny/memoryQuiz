@@ -1,10 +1,10 @@
+import { SignUpForm } from '@/features/auth/ui/signUp/signUpForm'
 import { Meta, StoryObj } from '@storybook/react'
-import {SignUpForm} from '@/features/auth/ui/signUp/signUpForm.tsx';
 
 const meta = {
-    title: 'Auth/signUp',
-    component: SignUpForm,
-    tags: ['autodocs'],
+  component: SignUpForm,
+  tags: ['autodocs'],
+  title: 'Auth/signUp',
 } satisfies Meta<typeof SignUpForm>
 
 export default meta
