@@ -1,3 +1,4 @@
+import { ControlledInput } from '@/components/controlled'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
@@ -19,33 +20,32 @@ export const SignUpForm = ({ onSubmit }: Props) => {
     confirmButton: clsx(s.confirmButton),
     container: clsx(s.container),
     form: clsx(s.form),
+    formHeader: clsx(s.formHeader),
     signIn: clsx(s.signIn),
   }
 
   return (
     <Card className={classNames.container}>
-      <Typography as={'h1'} variant={'large'}>
+      <Typography as={'h1'} className={classNames.formHeader} variant={'large'}>
         Sign Up
       </Typography>
       <form className={classNames.form} onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
-        {/*<ControlledInput*/}
-        {/*    control={control}*/}
-        {/*    label={'Email'}*/}
-        {/*    name={'email'}*/}
-        {/*    placeholder={'Email'}*/}
-        {/*/>*/}
-        {/*<ControlledInput*/}
-        {/*    control={control}*/}
-        {/*    label={'Password'}*/}
-        {/*    name={'password'}*/}
-        {/*    placeholder={'Password'}*/}
-        {/*/>*/}
-        {/*<ControlledInput*/}
-        {/*    control={control}*/}
-        {/*    label={'Confirm Password'}*/}
-        {/*    name={'confirmPassword'}*/}
-        {/*    placeholder={'Confirm Password'}/>*/}
+        <ControlledInput control={control} label={'Email'} name={'email'} placeholder={'Email'} />
+        <ControlledInput
+          control={control}
+          label={'Password'}
+          name={'password'}
+          placeholder={'Password'}
+          variant={'password'}
+        />
+        <ControlledInput
+          control={control}
+          label={'Confirm Password'}
+          name={'confirmPassword'}
+          placeholder={'Confirm Password'}
+          variant={'password'}
+        />
         <Button className={classNames.confirmButton} fullWidth type={'submit'}>
           Sign Up
         </Button>

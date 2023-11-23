@@ -13,7 +13,7 @@ import { clsx } from 'clsx'
 
 import s from './input.module.scss'
 
-export type TextFieldProps = {
+export type InputProps = {
   children?: ReactNode
   className?: string
   disabled?: boolean
@@ -26,7 +26,7 @@ export type TextFieldProps = {
   value?: string
   variant?: 'password' | 'search'
 } & ComponentPropsWithoutRef<'input'>
-export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
+export const Input = forwardRef<ElementRef<'input'>, InputProps>(
   (
     {
       className,
@@ -46,8 +46,10 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
       closeIcon: clsx(s.closeIcon),
       error: clsx(s.error),
       eyeIcon: clsx(s.eyeIcon),
-      input: clsx(variant && s[variant], className, error && s.inputError, disabled && s.disabled),
+      input: clsx(variant && s[variant], error && s.inputError, disabled && s.disabled),
+      inputContainer: clsx(s.inputContainer),
       label: clsx(s.label, disabled && s.disabled),
+      root: clsx(s.root, className),
       searchIcon: clsx(s.searchIcon),
     }
     const [currentValue, setInputValue] = useState<string | undefined>(value)
@@ -77,13 +79,13 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
     }
 
     return (
-      <div className={s.textFieldContainer}>
+      <div className={classNames.root}>
         {label && (
           <Typography as={'label'} className={classNames.label} variant={'body2'}>
             {label}
           </Typography>
         )}
-        <div className={s.inputContainer}>
+        <div className={classNames.inputContainer}>
           <input
             className={classNames.input}
             disabled={disabled}

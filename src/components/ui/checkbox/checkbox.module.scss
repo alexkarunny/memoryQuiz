@@ -20,13 +20,18 @@ button {
       justify-content: center;
 
       box-sizing: border-box;
-      width: 32px;
-      height: 32px;
-      margin-right: 3px;
+      width: 18px;
+      height: 18px;
+      margin-right: 8px;
 
       color: var(--color-dark-900);
 
       border-radius: 16px;
+
+      &[data-state='unchecked'] {
+        background-color: var(--color-dark-900);
+        border: 2px solid var(--color-light-900);
+      }
 
       &:focus-visible {
         background-color: var(--color-dark-100);
@@ -48,11 +53,6 @@ button {
 
         background-color: var(--color-light-100);
         border-radius: 3px;
-
-        &[data-state='unchecked'] {
-          background-color: var(--color-dark-900);
-          border: 2px solid var(--color-light-900);
-        }
 
         &[data-state='unchecked']:disabled {
           border: 2px solid var(--color-dark-100);
@@ -91,4 +91,8 @@ button {
       }
     }
   }
+}
+
+.left {
+  align-self: start;
 }

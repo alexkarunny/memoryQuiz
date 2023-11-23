@@ -13,13 +13,14 @@ export type CheckBoxProps = {
   disabled?: boolean
   label?: string
   onCheckedChange?: (checked: boolean) => void
+  position?: 'default' | 'left'
 } & ComponentPropsWithoutRef<typeof Root>
 
 export const CheckBox = forwardRef<ElementRef<typeof Root>, CheckBoxProps>(
-  ({ checked, className, disabled, label, onCheckedChange }, ref) => {
+  ({ checked, className, disabled, label, onCheckedChange, position = 'default' }, ref) => {
     const classNames = {
       buttonCheckBox: clsx(s.buttonCheckBox, disabled && s.disabled),
-      container: clsx(s.container, className),
+      container: clsx(s.container, className, s[position]),
       indicator: clsx(s.indicator),
       labelWrapper: clsx(s.labelWrapper, disabled && s.disabled),
       root: clsx(s.root),

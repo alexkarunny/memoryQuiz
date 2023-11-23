@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { TextField } from './'
+import { Input } from './'
 
 const meta = {
   argTypes: {
@@ -9,10 +9,10 @@ const meta = {
       options: ['password', 'search'],
     },
   },
-  component: TextField,
+  component: Input,
   tags: ['autodocs'],
   title: 'Components/TextField',
-} satisfies Meta<typeof TextField>
+} satisfies Meta<typeof Input>
 
 export default meta
 type Story = StoryObj<typeof meta>

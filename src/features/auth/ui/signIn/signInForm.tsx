@@ -1,3 +1,4 @@
+import { ControlledCheckbox, ControlledInput } from '@/components/controlled'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
@@ -18,29 +19,33 @@ export const SignInForm = ({ onSubmit }: Props) => {
     dontHaveAccLabel: clsx(s.dontHaveAcc),
     forgotPasswordLabel: clsx(s.forgotPassword),
     form: clsx(s.form),
+    formHeader: clsx(s.formHeader),
+    input: clsx(s.input),
     signUp: clsx(s.signUp),
   }
 
   return (
     <Card className={classNames.container}>
-      <Typography as={'h1'} variant={'large'}>
+      <Typography as={'h1'} className={classNames.formHeader} variant={'large'}>
         Sign In
       </Typography>
       <form className={classNames.form} onSubmit={handleSubmit(onSubmit)}>
         <DevTool control={control} />
-        {/*<ControlledTextField*/}
-        {/*  control={control}*/}
-        {/*  label={'Email'}*/}
-        {/*  name={'email'}*/}
-        {/*  placeholder={'Email'}*/}
-        {/*/>*/}
-        {/*<ControlledTextField*/}
-        {/*  control={control}*/}
-        {/*  label={'Password'}*/}
-        {/*  name={'password'}*/}
-        {/*  placeholder={'Password'}*/}
-        {/*/>*/}
-        {/*<ControlledCheckbox control={control} label={'rememberMe'} name={'rememberMe'} />*/}
+        <ControlledInput control={control} label={'Email'} name={'email'} placeholder={'Email'} />
+        <ControlledInput
+          className={classNames.input}
+          control={control}
+          label={'Password'}
+          name={'password'}
+          placeholder={'Password'}
+          variant={'password'}
+        />
+        <ControlledCheckbox
+          control={control}
+          label={'Remember me'}
+          name={'rememberMe'}
+          position={'left'}
+        />
         <Typography as={'a'} className={classNames.forgotPasswordLabel} variant={'body2'}>
           Forgot Password?
         </Typography>
@@ -49,7 +54,7 @@ export const SignInForm = ({ onSubmit }: Props) => {
         </Button>
       </form>
       <Typography className={classNames.dontHaveAccLabel} variant={'body2'}>
-        Don't have an account?
+        Don&apos;t have an account?
       </Typography>
       <Button as={'a'} className={classNames.signUp} variant={'link'}>
         Sign Up
