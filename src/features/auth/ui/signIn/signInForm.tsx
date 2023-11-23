@@ -51,7 +51,7 @@ export const SignInForm = ({ onSubmit }: Props) => {
       <Typography
         className={classNames.dontHaveAccLabel}
         variant={'body2'}
-      >{`Don't have an account?`}</Typography>
+      >Don't have an account?</Typography>
       <Button as={'a'} className={classNames.signUp} variant={'link'}>
         Sign Up
       </Button>
