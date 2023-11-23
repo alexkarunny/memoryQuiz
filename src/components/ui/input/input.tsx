@@ -51,7 +51,7 @@ export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
       searchIcon: clsx(s.searchIcon),
     }
     const [currentValue, setInputValue] = useState<string | undefined>(value)
-    const [showPassword, setShowPassword] = useState<boolean>(false)
+    const [showPassword, setShowPassword] = useState<boolean>(true)
     const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
       setInputValue(e.currentTarget.value)
       onChange && onChange(e)
