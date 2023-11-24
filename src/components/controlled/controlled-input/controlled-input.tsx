@@ -16,7 +16,16 @@ export const ControlledInput = <T extends FieldValues>({
 }: Props<T>) => {
   const {
     field: { onChange, value },
+    fieldState: { error },
   } = useController({ control, disabled, name, shouldUnregister })
 
-  return <Input disabled={disabled} onValueChange={onChange} value={value} {...rest} />
+  return (
+    <Input
+      disabled={disabled}
+      error={error?.message}
+      onValueChange={onChange}
+      value={value}
+      {...rest}
+    />
+  )
 }
