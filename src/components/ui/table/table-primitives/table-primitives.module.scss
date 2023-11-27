@@ -1,0 +1,65 @@
+.columnName {
+  display: flex;
+  justify-items: flex-start;
+  width: 100%;
+}
+
+.columnNameIcon {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  justify-content: flex-start;
+
+  width: 100%;
+}
+
+.cellText {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cellCheckboxText {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  place-items: center;
+  align-items: center;
+
+  font-size: 14px;
+}
+
+.cellIcons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.cellTextIcons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.cellGrade {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.cellPhotoText {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+
+  img {
+    width: 120px;
+    height: 48px;
+  }
+}
+
+.cellCheckbox {
+  display: flex;
+  justify-items: flex-start;
+}
