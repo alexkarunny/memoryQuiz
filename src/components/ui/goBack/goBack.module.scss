@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  justify-content: center;
+
+  height: 24px;
+
+  color: var(--color-light-100);
+}
+
+.text {
+  margin: 0;
+}
