@@ -1,0 +1,13 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 348px;
+}
+
+.field {
+  margin-bottom: 24px;
+}
+
+.withErrors {
+  margin-bottom: 12px;
+}

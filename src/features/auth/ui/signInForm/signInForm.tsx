@@ -2,7 +2,7 @@ import { ControlledCheckbox, ControlledInput } from '@/components/controlled'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
-import { SignInFormValues, useSignIn } from '@/features/auth/ui/signIn/useSignIn'
+import { SignInFormValues, useSignIn } from '@/features/auth/ui/signInForm/useSignIn'
 import { DevTool } from '@hookform/devtools'
 import { clsx } from 'clsx'
 

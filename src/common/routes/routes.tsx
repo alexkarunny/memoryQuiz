@@ -26,7 +26,7 @@ export const privateRoutes: RouteObject[] = [
 
 // export const publicRoutes: RouteObject[] = [
 //   {
-//     path: '/signIn',
+//     path: '/signInForm',
 //     element: <SignInPage />,
 //   },
 //   {
@@ -34,11 +34,11 @@ export const privateRoutes: RouteObject[] = [
 //     element: <SignUpPage />,
 //   },
 //   {
-//     path: '/forgotPassword',
+//     path: '/forgotPasswordForm',
 //     element: <ForgotPasswordPage />,
 //   },
 //   {
-//     path: `${'/createNewPassword'}/:token`,
+//     path: `${'/createNewPasswordForm'}/:token`,
 //     element: <CreateNewPasswordPage />,
 //   },
 //   {

@@ -1,5 +1,5 @@
 import { Page } from '@/components/ui/page/page'
-import { ForgotPasswordForm } from '@/features/auth/ui/forgotPassword/forgotPasswordForm.tsx'
+import { ForgotPasswordForm } from '@/features/auth/ui/forgotPasswordForm/forgotPasswordForm'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {

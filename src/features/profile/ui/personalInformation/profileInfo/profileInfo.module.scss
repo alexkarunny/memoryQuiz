@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.name {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  margin: 0;
+}
+
+.email {
+  margin: 0 0 13px;
+  color: var(--color-dark-100);
+}
+
+.buttonLabel {
+  margin: 0;
+}
+
+.logoutButton {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
