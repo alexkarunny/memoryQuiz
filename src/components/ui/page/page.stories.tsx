@@ -1,5 +1,5 @@
 import { Page } from '@/components/ui/page/page'
-import { ForgotPassword } from '@/features/auth/ui/forgotPassword/forgotPassword'
+import { ForgotPasswordForm } from '@/features/auth/ui/forgotPassword/forgotPasswordForm.tsx'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -12,6 +12,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
-    children: <ForgotPassword onSubmit={console.log} />,
+    children: <ForgotPasswordForm onSubmit={console.log} />,
   },
 }

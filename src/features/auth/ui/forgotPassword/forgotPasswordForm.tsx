@@ -7,13 +7,13 @@ import { useSignIn } from '@/features/auth/ui/signIn/useSignIn'
 import { DevTool } from '@hookform/devtools'
 import { clsx } from 'clsx'
 
-import s from './forgotPassword.module.scss'
+import s from './forgotPasswordForm.module.scss'
 
 type Props = {
   onSubmit: (data: ForgotPassValue) => void
 }
 
-export const ForgotPassword = ({ onSubmit }: Props) => {
+export const ForgotPasswordForm = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useSignIn()
   const classNames = {
     container: clsx(s.container),

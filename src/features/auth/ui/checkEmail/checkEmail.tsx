@@ -4,7 +4,7 @@ import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
 import { clsx } from 'clsx'
 
-import s from '@/features/auth/ui/checkEmail/CheckEmail.module.scss'
+import s from '@/features/auth/ui/checkEmail/checkEmail.module.scss'
 
 export const CheckEmail = () => {
   const classNames = {

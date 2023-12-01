@@ -1,1 +1,1 @@
-export * from '@/features/auth/ui/checkEmail'
+export * from './checkEmail'

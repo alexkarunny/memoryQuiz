@@ -5,7 +5,7 @@ import { SignInForm } from '@/features/auth/ui/signIn/signInForm'
 const meta = {
   component: SignInForm,
   tags: ['autodocs'],
-  title: 'Auth/signIn',
+  title: 'Auth/SignIn',
 } satisfies Meta<typeof SignInForm>
 
 export default meta
