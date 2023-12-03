@@ -4,6 +4,7 @@ import {
   RecoverPasswordParamsType,
   ResetPasswordParamsType,
   SignInDataType,
+  SignUpDataType,
 } from '@/features/auth/api/authApi.types'
 import { baseApi } from '@/services/baseApi'
 
@@ -46,7 +47,7 @@ export const authApi = baseApi.injectEndpoints({
         url: `auth/reset-password/${token}`,
       }),
     }),
-    signUp: builder.mutation<AuthResponseType, FormData>({
+    signUp: builder.mutation<AuthResponseType, SignUpDataType>({
       invalidatesTags: ['Me'],
       query: body => ({
         body,

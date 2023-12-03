@@ -1,6 +1,6 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 // import { SignInPage } from '@/pages/signInPage/SignInPage.tsx'
-// import { SignUpPage } from '@/pages/signUpPage/SignUpPage.tsx'
+// import { SignUpPage } from '@/pages/signUpPage/signUpPage.tsx'
 // import { ForgotPasswordPage } from '@/pages/forgotPasswordPage/ForgotPasswordPage.tsx'
 // import { CreateNewPasswordPage } from '@/pages/createNewPasswordPage/CreateNewPasswordPage.tsx'
 // import { NotFoundPage } from '@/pages/notFoundPage/NotFoundPage.tsx'
