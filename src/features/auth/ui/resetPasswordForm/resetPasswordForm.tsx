@@ -2,17 +2,18 @@ import { ControlledInput } from '@/components/controlled'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
-import { useCreateNewPassword } from '@/features/auth/ui/createNewPasswordForm/useCreateNewPassword'
+import { ResetPasswordParamsType } from '@/features/auth/api'
+import { useResetPassword } from '@/features/auth/ui/resetPasswordForm/useResetPassword'
 import { DevTool } from '@hookform/devtools'
 import { clsx } from 'clsx'
 
-import s from './createNewPasswordForm.module.scss'
+import s from './resetPasswordForm.module.scss'
 
 type Props = {
-  onSubmit: () => void
+  onSubmit: (data: ResetPasswordParamsType) => void
 }
-export const CreateNewPasswordForm = ({ onSubmit }: Props) => {
-  const { control, handleSubmit } = useCreateNewPassword()
+export const ResetPasswordForm = ({ onSubmit }: Props) => {
+  const { control, handleSubmit } = useResetPassword()
   const classNames = {
     confirmButton: clsx(s.confirmButton),
     container: clsx(s.container),

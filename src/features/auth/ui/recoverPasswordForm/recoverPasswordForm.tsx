@@ -2,18 +2,18 @@ import { ControlledInput } from '@/components/controlled'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 import { Typography } from '@/components/ui/typography'
-import { ForgotPassValue } from '@/features/auth/ui/forgotPasswordForm/useForgot'
+import { recoverPasswordValue } from '@/features/auth/ui/recoverPasswordForm/useRecoverPassword'
 import { useSignIn } from '@/features/auth/ui/signInForm/useSignIn'
 import { DevTool } from '@hookform/devtools'
 import { clsx } from 'clsx'
 
-import s from './forgotPasswordForm.module.scss'
+import s from './recoverPasswordForm.module.scss'
 
 type Props = {
-  onSubmit: (data: ForgotPassValue) => void
+  onSubmit: (data: recoverPasswordValue) => void
 }
 
-export const ForgotPasswordForm = ({ onSubmit }: Props) => {
+export const RecoverPasswordForm = ({ onSubmit }: Props) => {
   const { control, handleSubmit } = useSignIn()
   const classNames = {
     container: clsx(s.container),

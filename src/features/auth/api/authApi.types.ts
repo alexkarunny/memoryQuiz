@@ -26,7 +26,7 @@ export type RecoverPasswordParamsType = {
 }
 
 export type ResetPasswordParamsType = Pick<SignUpParamsType, 'password'> & {
-  token: string
+  token?: string
 }
 
 export type SignUpDataType = Pick<SignUpParamsType, 'email' | 'password'>

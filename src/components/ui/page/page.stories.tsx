@@ -1,5 +1,5 @@
 import { Page } from '@/components/ui/page/page'
-import { ForgotPasswordForm } from '@/features/auth/ui/forgotPasswordForm/forgotPasswordForm'
+import { RecoverPasswordForm } from '@/features/auth/ui/recoverPasswordForm/recoverPasswordForm'
 import { Meta, StoryObj } from '@storybook/react'
 
 const meta = {
@@ -12,6 +12,6 @@ export default meta
 type Story = StoryObj<typeof meta>
 export const Default: Story = {
   args: {
-    children: <ForgotPasswordForm onSubmit={console.log} />,
+    children: <RecoverPasswordForm onSubmit={console.log} />,
   },
 }

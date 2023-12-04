@@ -1,8 +1,8 @@
 import { Navigate, RouteObject } from 'react-router-dom'
 // import { SignInPage } from '@/pages/signInPage/SignInPage.tsx'
 // import { SignUpPage } from '@/pages/signUpPage/signUpPage.tsx'
-// import { ForgotPasswordPage } from '@/pages/forgotPasswordPage/ForgotPasswordPage.tsx'
-// import { CreateNewPasswordPage } from '@/pages/createNewPasswordPage/CreateNewPasswordPage.tsx'
+// import { ForgotPasswordPage } from '@/pages/recoverPasswordPage/ForgotPasswordPage.tsx'
+// import { CreateNewPasswordPage } from '@/pages/resetPasswordPage/CreateNewPasswordPage.tsx'
 // import { NotFoundPage } from '@/pages/notFoundPage/NotFoundPage.tsx'
 
 export const privateRoutes: RouteObject[] = [
@@ -26,7 +26,7 @@ export const privateRoutes: RouteObject[] = [
 
 // export const publicRoutes: RouteObject[] = [
 //   {
-//     path: '/signInForm',
+//     path: '/signIn',
 //     element: <SignInPage />,
 //   },
 //   {
@@ -34,12 +34,12 @@ export const privateRoutes: RouteObject[] = [
 //     element: <SignUpPage />,
 //   },
 //   {
-//     path: '/forgotPasswordForm',
-//     element: <ForgotPasswordPage />,
+//     path: '/recoverPasswordForm',
+//     element: <RecoverPasswordPage />,
 //   },
 //   {
-//     path: `${'/createNewPasswordForm'}/:token`,
-//     element: <CreateNewPasswordPage />,
+//     path: `${'/resetPasswordForm'}/:token`,
+//     element: <ResetPasswordPage />,
 //   },
 //   {
 //     path: '/404',

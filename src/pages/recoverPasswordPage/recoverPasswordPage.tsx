@@ -3,12 +3,12 @@ import { useState } from 'react'
 import { Page } from '@/components/ui/page'
 import { RecoverPasswordParamsType, useRecoverPasswordMutation } from '@/features/auth/api'
 import { CheckEmail } from '@/features/auth/ui/checkEmail'
-import { ForgotPasswordForm } from '@/features/auth/ui/forgotPasswordForm'
+import { RecoverPasswordForm } from '@/features/auth/ui/recoverPasswordForm'
 
-export const ForgotPasswordPage = () => {
+export const RecoverPasswordPage = () => {
   const [forgotPassword, { isSuccess }] = useRecoverPasswordMutation()
   const [email, setEmail] = useState('')
-  const forgotPasswordHandler = ({ email }: RecoverPasswordParamsType) => {
+  const recoverPasswordHandler = ({ email }: RecoverPasswordParamsType) => {
     forgotPassword({ email })
     if (isSuccess) {
       setEmail(email)
@@ -17,7 +17,7 @@ export const ForgotPasswordPage = () => {
 
   return (
     <Page>
-      {!isSuccess && <ForgotPasswordForm onSubmit={forgotPasswordHandler} />}
+      {!isSuccess && <RecoverPasswordForm onSubmit={recoverPasswordHandler} />}
       {isSuccess && <CheckEmail email={email} />}
     </Page>
   )
