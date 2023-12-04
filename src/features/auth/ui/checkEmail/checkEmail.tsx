@@ -6,7 +6,10 @@ import { clsx } from 'clsx'
 
 import s from '@/features/auth/ui/checkEmail/checkEmail.module.scss'
 
-export const CheckEmail = () => {
+type CheckEmailProps = {
+  email: string
+}
+export const CheckEmail = ({ email }: CheckEmailProps) => {
   const classNames = {
     checkMailLabel: clsx(s.checkMailLabel),
     confirmButton: clsx(s.confirmButton),
@@ -21,7 +24,7 @@ export const CheckEmail = () => {
       </Typography>
       <Email z-index={100} />
       <Typography className={classNames.instructionsLabel} variant={'body2'}>
-        We’ve sent an Email with instructions to example@mail.com
+        {`We’ve sent an Email with instructions to ${email}`}
       </Typography>
       <Button className={classNames.confirmButton} fullWidth>
         Back to sign In
