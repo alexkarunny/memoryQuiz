@@ -5,7 +5,7 @@ import {
     GetCardByIdParamsType,
     GetCardsParamsType,
     GetCardsResponseType, GetRandomCardParamsType, GradeCardParamsType, UpdateCardParamsType
-} from '@/features/cards/api/cardsApi.types.ts';
+} from './cardsApi.types';
 
 export const cardsApi = baseApi.injectEndpoints({
     endpoints: builder => ({
