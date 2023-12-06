@@ -62,3 +62,12 @@ export const cardsApi = baseApi.injectEndpoints({
         })
     })
 })
+
+
+export const { useGetCardsQuery,
+    useCreateCardMutation,
+    useGetRandomCardQuery,
+    useGradeCardMutation,
+    useGetCardByIdQuery,
+    useUpdateCardMutation,
+    useDeleteCardMutation } = cardsApi
