@@ -11,5 +11,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
-  args: {},
+  args: {
+    avatar: 'https://placehold.jp/3d4070/ffffff/150x150.png ',
+  },
 }
