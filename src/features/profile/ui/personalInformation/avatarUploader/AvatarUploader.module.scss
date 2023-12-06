@@ -1,0 +1,15 @@
+.root {
+  position: relative;
+}
+
+.uploader {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.edit {
+  background-color: var(--color-dark-300);
+  border-radius: 4px;
+  box-shadow: 0 2px 10px 0 rgb(109 109 109 / 25%);
+}
