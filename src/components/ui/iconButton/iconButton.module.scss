@@ -1,0 +1,15 @@
+.IconButton {
+  all: unset;
+
+  cursor: pointer;
+
+  position: relative;
+
+  padding: 0;
+
+  border: none;
+}
+
+&:hover {
+  opacity: 0.8;
+}

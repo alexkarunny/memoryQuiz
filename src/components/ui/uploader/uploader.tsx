@@ -10,12 +10,12 @@ import { UploaderPayload, uploaderSchema } from '.'
 
 export type UploaderProps = {
   children: ReactNode
-  className: string
-  onLoadEnd: (file: UploaderPayload) => void
+  className?: string
+  onLoadCover: (file: UploaderPayload) => void
   onLoadError: (error: string) => void
 }
 
-export const Uploader = ({ children, className, onLoadEnd, onLoadError }: UploaderProps) => {
+export const Uploader = ({ children, className, onLoadCover, onLoadError }: UploaderProps) => {
   const ref = useRef<HTMLInputElement>(null)
 
   const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,7 +24,7 @@ export const Uploader = ({ children, className, onLoadEnd, onLoadError }: Upload
     try {
       uploaderSchema.parse(file)
       if (file) {
-        onLoadEnd(file)
+        onLoadCover(file)
       }
     } catch (e) {
       const error = e as Error | ZodError
