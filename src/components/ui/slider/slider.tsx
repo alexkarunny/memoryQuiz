@@ -29,12 +29,18 @@ export const Slider = forwardRef<ElementRef<typeof Root>, SliderProps>(({ label 
       </Typography>
       <div className={classNames.sliderContainer}>
         <input className={classNames.sliderInput} max={98} min={1} type={'number'} />
-        <Root className={classNames.root} minStepsBetweenThumbs={1} ref={ref} step={1}>
+        <Root
+          className={classNames.root}
+          defaultValue={[25, 75]}
+          minStepsBetweenThumbs={1}
+          ref={ref}
+          step={1}
+        >
           <Track className={classNames.track}>
             <Range className={classNames.range} />
           </Track>
-          <Thumb className={classNames.thumb} />
-          <Thumb className={classNames.thumb} />
+          <Thumb aria-label={'Volume'} className={classNames.thumb} />
+          <Thumb aria-label={'Volume'} className={classNames.thumb} />
         </Root>
         <input className={classNames.sliderInput} max={99} min={2} type={'number'} />
       </div>
