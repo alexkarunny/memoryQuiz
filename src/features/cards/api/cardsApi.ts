@@ -1,73 +1,78 @@
-import {baseApi} from '@/services/baseApi.ts';
+import { baseApi } from '@/services/baseApi'
+
 import {
-    CardType,
-    CreateCardParamsType,
-    GetCardByIdParamsType,
-    GetCardsParamsType,
-    GetCardsResponseType, GetRandomCardParamsType, GradeCardParamsType, UpdateCardParamsType
-} from './cardsApi.types';
+  CardType,
+  CreateCardParamsType,
+  GetCardByIdParamsType,
+  GetCardsParamsType,
+  GetCardsResponseType,
+  GetRandomCardParamsType,
+  GradeCardParamsType,
+  UpdateCardParamsType,
+} from './cardsApi.types'
 
 export const cardsApi = baseApi.injectEndpoints({
-    endpoints: builder => ({
-    getCards: builder.query<GetCardsResponseType ,GetCardsParamsType>({
-    query: ({id, params}) => ({
-        url: `decks/${id}/cards`,
-        params: params
-    }),
-        providesTags: ['Cards']
-    }),
+  endpoints: builder => ({
     createCard: builder.mutation<CardType, CreateCardParamsType>({
-        query: ({id, body}) => ({
-            url: `decks/${id}/cards`,
-            method: 'POST',
-        body
-        }),
-        invalidatesTags: ['Decks','Cards']
+      invalidatesTags: ['Decks', 'Cards'],
+      query: ({ body, id }) => ({
+        body,
+        method: 'POST',
+        url: `decks/${id}/cards`,
+      }),
+    }),
+    deleteCard: builder.mutation<void, GetCardByIdParamsType>({
+      invalidatesTags: ['Cards'],
+      query: ({ id }) => ({
+        method: 'DELETE',
+        url: `cards/${id}`,
+      }),
+    }),
+    getCardById: builder.query<CardType, GetCardByIdParamsType>({
+      providesTags: ['Cards'],
+      query: ({ id }) => ({
+        method: 'GET',
+        url: `cards/${id}`,
+      }),
+    }),
+    getCards: builder.query<GetCardsResponseType, GetCardsParamsType>({
+      providesTags: ['Cards'],
+      query: ({ id, params }) => ({
+        params: params,
+        url: `decks/${id}/cards`,
+      }),
     }),
     getRandomCard: builder.query<CardType, GetRandomCardParamsType>({
-        query: ({id, params}) => ({
-            url: `decks/${id}/learn`,
-        params: params
-        }),
-        providesTags: ['Cards']
+      providesTags: ['Cards'],
+      query: ({ id, params }) => ({
+        params: params,
+        url: `decks/${id}/learn`,
+      }),
     }),
     gradeCard: builder.mutation<void, GradeCardParamsType>({
-        query: ({id,body}) => ({
-            url: `decks/${id}/learn`,
-            body
-        }),
-        invalidatesTags: ['Cards']
+      invalidatesTags: ['Cards'],
+      query: ({ body, id }) => ({
+        body,
+        url: `decks/${id}/learn`,
+      }),
     }),
-        getCardById: builder.query<CardType, GetCardByIdParamsType>({
-            query: ({ id }) => ({
-                url: `cards/${id}`,
-                method: 'GET',
-            }),
-            providesTags: ['Cards'],
-        }),
-        updateCard: builder.mutation<CardType, UpdateCardParamsType>({
-            query: ({ id, body }) => ({
-                url: `cards/${id}`,
-                method: 'PATCH',
-                body,
-            }),
-            invalidatesTags: ['Cards'],
-        }),
-        deleteCard: builder.mutation<void, GetCardByIdParamsType>({
-            query: ({id}) => ({
-                url: `cards/${id}`,
-                method: 'DELETE',
-            }),
-            invalidatesTags: ['Cards'],
-        })
-    })
+    updateCard: builder.mutation<CardType, UpdateCardParamsType>({
+      invalidatesTags: ['Cards'],
+      query: ({ body, id }) => ({
+        body,
+        method: 'PATCH',
+        url: `cards/${id}`,
+      }),
+    }),
+  }),
 })
 
-
-export const { useGetCardsQuery,
-    useCreateCardMutation,
-    useGetRandomCardQuery,
-    useGradeCardMutation,
-    useGetCardByIdQuery,
-    useUpdateCardMutation,
-    useDeleteCardMutation } = cardsApi
+export const {
+  useCreateCardMutation,
+  useDeleteCardMutation,
+  useGetCardByIdQuery,
+  useGetCardsQuery,
+  useGetRandomCardQuery,
+  useGradeCardMutation,
+  useUpdateCardMutation,
+} = cardsApi

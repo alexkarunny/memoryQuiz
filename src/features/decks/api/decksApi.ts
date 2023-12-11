@@ -1,51 +1,60 @@
-import {baseApi} from '@/services/baseApi.ts';
-import {
-    DecksResponseType,
-    DeckType,
-    DeleteDeckParamsType, DeleteDeckResponseType, GetDeckByIdParamsType,
-    GetDecksParamsType, UpdateDeckParamsType
-} from './decksApi.types';
+import { baseApi } from '@/services/baseApi'
 
+import {
+  DeckType,
+  DecksResponseType,
+  DeleteDeckParamsType,
+  DeleteDeckResponseType,
+  GetDeckByIdParamsType,
+  GetDecksParamsType,
+  UpdateDeckParamsType,
+} from './decksApi.types'
 
 export const decksApi = baseApi.injectEndpoints({
-    endpoints: builder => ({
-        getDecks: builder.query<DecksResponseType,Partial<GetDecksParamsType> | void >({
-            query: params => ({
-                url: `decks`,
-                ... (params ? { params: params ?? {} } : null)
-            }),
-            providesTags: ['Decks']
-        }),
-        createDeck: builder.mutation<DeckType, FormData>({
-            query: body => ({
-                url: `decks`,
-                method: 'POST',
-                body
-            }),
-            invalidatesTags: ['Decks']
-        }),
-        deleteDeck: builder.mutation<DeleteDeckResponseType, DeleteDeckParamsType>({
-            query: ({id}) => ({
-                url: `decks/${id}` ,
-                method: 'DELETE',
-            }),
-            invalidatesTags: ['Decks']
-        }),
-        updateDeck: builder.mutation<DeckType , UpdateDeckParamsType>({
-            query: ({id, body}) => ({
-                url: `decks/${id}`,
-                method: 'PATCH',
-                body
-            }),
-            invalidatesTags: ['Decks']
-        }),
-        getDeckById: builder.query<DeckType, GetDeckByIdParamsType>({
-            query: ({id}) => ({
-                url: `decks/${id}`,
-            }),
-            providesTags: ['Decks']
-        })
-    })
+  endpoints: builder => ({
+    createDeck: builder.mutation<DeckType, FormData>({
+      invalidatesTags: ['Decks'],
+      query: body => ({
+        body,
+        method: 'POST',
+        url: `decks`,
+      }),
+    }),
+    deleteDeck: builder.mutation<DeleteDeckResponseType, DeleteDeckParamsType>({
+      invalidatesTags: ['Decks'],
+      query: ({ id }) => ({
+        method: 'DELETE',
+        url: `decks/${id}`,
+      }),
+    }),
+    getDeckById: builder.query<DeckType, GetDeckByIdParamsType>({
+      providesTags: ['Decks'],
+      query: ({ id }) => ({
+        url: `decks/${id}`,
+      }),
+    }),
+    getDecks: builder.query<DecksResponseType, Partial<GetDecksParamsType> | void>({
+      providesTags: ['Decks'],
+      query: params => ({
+        url: `decks`,
+        ...(params ? { params: params ?? {} } : null),
+      }),
+    }),
+    updateDeck: builder.mutation<DeckType, UpdateDeckParamsType>({
+      invalidatesTags: ['Decks'],
+      query: ({ body, id }) => ({
+        body,
+        method: 'PATCH',
+        url: `decks/${id}`,
+      }),
+    }),
+  }),
 })
 
-export const {useGetDecksQuery,useCreateDeckMutation,useDeleteDeckMutation,useUpdateDeckMutation,useGetDeckByIdQuery } = decksApi
+export const {
+  useCreateDeckMutation,
+  useDeleteDeckMutation,
+  useGetDeckByIdQuery,
+  useGetDecksQuery,
+  useUpdateDeckMutation,
+} = decksApi
