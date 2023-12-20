@@ -4,7 +4,7 @@ import {Panel} from '@/components/ui/panel/panel.tsx';
 const meta = {
     component: Panel,
     tags: ['autodocs'],
-    title: 'Components/Page',
+    title: 'Components/Panel',
 } satisfies Meta<typeof Panel>
 
 export default meta

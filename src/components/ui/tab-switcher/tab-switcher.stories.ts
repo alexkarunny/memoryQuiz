@@ -1,13 +1,14 @@
 import { Typography } from '@/components/ui/typography'
-import { Meta, StoryObj } from '@storybook/react'
+import {  StoryObj } from '@storybook/react'
+import {TabItemType, TabSwitcher} from '.'
 
-import { TabItemType, TabSwitcher } from './tab-switcher'
+
 
 const meta = {
   component: TabSwitcher,
   tags: ['autodocs'],
   title: 'Components/TabSwitcher',
-} satisfies Meta<typeof TabSwitcher>
+}
 
 export default meta
 type Story = StoryObj<typeof meta>
@@ -35,6 +36,6 @@ const tabs: TabItemType[] = [
 
 export const Default: Story = {
   args: {
-    tabs,
-  },
+    tabs
+  }
 }
