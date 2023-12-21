@@ -5,14 +5,14 @@
 
   &:first-child {
     border-right: none;
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
   }
 
   &:last-child {
     border-left: none;
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
   }
 
   &:hover {
